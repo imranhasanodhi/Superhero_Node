@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get All</title>
+  <style>
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 20px;
+    }
+    .hero-card {
+      display: flex;
+      gap: 10px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+    }
+    .hero-card div {
+      flex: 1;
+    }
+    .hero-card strong {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Get All</h1>
+  <div id="superheroes" class="hero-container"></div>
+
+  <script>
+    const baseURL = 'http://localhost:3000/superheroes';
+
+    async function fetchSuperheroes() {
+      try {
+        const res = await fetch(baseURL);
+        if (!res.ok) throw new Error('Failed to fetch superheroes');
+        const superheroes = await res.json();
+
+        let superheroesHTML = superheroes.map(hero => `
+          <div class="hero-card">
+            <div><strong>heroID:</strong> ${hero.heroID}</div>
+            <div><strong>name:</strong> ${hero.name}</div>
+            <div><strong>gear:</strong> ${hero.gear}</div>
+            <div><strong>costume:</strong> ${hero.costume}</div>
+            <div><strong>yearOfBirth:</strong> ${hero.yearOfBirth}</div>
+          </div>
+        `).join('');
+
+        document.getElementById('superheroes').innerHTML = superheroesHTML;
+      } catch (error) {
+        window.location.href = 'error.html';
+      }
+    }
+    fetchSuperheroes();
+  </script>
+</body>
+</html>

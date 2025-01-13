@@ -1,0 +1,51 @@
+[
+  {
+    "heroID": 6,
+    "name": "SuperQL",
+    "gear": "HelmeT",
+    "costume": "blue",
+    "yearOfBirth": 1890
+  },
+  {
+    "heroID": 2,
+    "name": "DataMaster",
+    "gear": "MemoryEnhancer",
+    "costume": "green",
+    "yearOfBirth": 1990
+  },
+  {
+    "heroID": 5,
+    "name": "Lightning",
+    "gear": "Glove",
+    "costume": "brown",
+    "yearOfBirth": 1960
+  },
+  {
+    "heroID": 1,
+    "name": "SuperMoron",
+    "gear": "JumpBoots",
+    "costume": "orange",
+    "yearOfBirth": 1905
+  },
+  {
+    "heroID": 3,
+    "name": "SuperGenius",
+    "gear": "SeachEngine",
+    "costume": "memoryhelmet",
+    "yearOfBirth": 2017
+  },
+  {
+    "heroID": 4,
+    "name": "Rustman",
+    "gear": "Cape",
+    "costume": "data-outfit",
+    "yearOfBirth": 2000
+  },
+  {
+    "heroID": 7,
+    "name": "SteelFoot",
+    "gear": "SuperArmour",
+    "costume": "red",
+    "yearOfBirth": 1930
+  }
+]

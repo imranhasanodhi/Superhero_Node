@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insert Superhero</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+    }
+    label {
+      text-align: left;
+    }
+    .input-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    input {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Insert Superhero</h1>
+  <form id="addHeroForm">
+    <div class="input-container">
+      <label for="heroID">Hero ID:</label>
+      <input type="number" id="heroID" name="heroID" required>
+    </div>
+    <div class="input-container">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="input-container">
+      <label for="gear">Gear:</label>
+      <input type="text" id="gear" name="gear" required>
+    </div>
+    <div class="input-container">
+      <label for="costume">Costume:</label>
+      <input type="text" id="costume" name="costume" required>
+    </div>
+    <div class="input-container">
+      <label for="yearOfBirth">Year of Birth:</label>
+      <input type="number" id="yearOfBirth" name="yearOfBirth" required>
+    </div>
+    <button type="submit">Add Superhero</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const baseURL = 'http://localhost:3000/superheroes';
+
+    document.getElementById('addHeroForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const hero = {
+        heroID: parseInt(document.getElementById('heroID').value),
+        name: document.getElementById('name').value,
+        gear: document.getElementById('gear').value,
+        costume: document.getElementById('costume').value,
+        yearOfBirth: parseInt(document.getElementById('yearOfBirth').value),
+      };
+
+      try {
+        const res = await fetch(baseURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(hero),
+        });
+
+        if (!res.ok) throw new Error('Failed to add superhero');
+        document.getElementById('result').innerText = 'Superhero added successfully!';
+      } catch (error) {
+        window.location.href = 'error.html';
+      }
+    });
+  </script>
+</body>
+</html>
